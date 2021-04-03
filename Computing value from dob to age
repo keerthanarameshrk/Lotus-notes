@@ -1,0 +1,39 @@
+(I) if dob greater than current date age displays - 
+
+Dob:= @Subset(Dob;-1); 
+
+Currdate:=@Today; 
+
+age:=-(@If(@Text(Dob)!=""&@Text(Currdate)!="";@Year(Dob)-@Year(Currdate);0)); 
+
+@If(age=0;"";@Text(age)) 
+
+ 
+
+(II) if the dob greater than current date age will not calculated 
+
+Dob:= @Subset(Dateofbirth;-1); 
+
+Currdate:=@Today; 
+
+age:=-(@If(@Text(Dob)!=""&@Text(Currdate)!="";@Year(Dob)-@Year(Currdate);0)); 
+
+@If(age<0;"please enter valid dob";@Text(age)) 
+
+ 
+
+(iii) UPDATED AGE CODE 
+
+@If(@IsNull(Dateofbirth);@Return("");year1:=@Year(@Date(Dateofbirth))); 
+
+@If(year1>@Year(@Date(@Today));@Return("enter valid dob"); 
+
+@Year(@Date(@Today))-year1) 
+
+ 
+
+(IV) HIDE WHEN AGE 
+
+input:=@GetField("Age"); 
+
+@If(input>20; 1;0) 
