@@ -1,0 +1,1739 @@
+Edit document 
+
+ 
+
+@Command([EditDocument]); 
+
+@Command([NavNext]) 
+
+ 
+
+Task 9 
+
+ 
+
+Open document 
+
+ 
+
+@Command([OpenDocument]) 
+
+ 
+
+Task 10 
+
+ 
+
+Delete document 
+
+ 
+
+@DeleteDocument 
+
+ 
+
+Task 11 
+
+ 
+
+Hiding field with respect to roles 
+
+ 
+
+!@Contains(@UserRoles;"[Admin]") 
+
+ 
+
+Task 12 
+
+ 
+
+Opening agent  
+
+ 
+
+@Command([RunAgent];"HomeAgent"); 
+
+@Prompt([ok];"Submit";"Successfully submitted and executed agent");  
+
+ 
+
+Task 13 
+
+ 
+
+Finding ascii value 
+
+ 
+
+@Ascii("65") 
+
+ 
+
+Task 14 
+
+ 
+
+Character value 
+
+ 
+
+@Char(65) 
+
+ 
+
+Task 15 
+
+ 
+
+Narrow character 
+
+ 
+
+@Narrow("Switz") 
+
+ 
+
+Task 16 
+
+ 
+
+Using newline 
+
+ 
+
+"first"+@NewLine+"second" 
+
+ 
+
+Task 17 
+
+ 
+
+Wide range 
+
+ 
+
+@Wide("switz") 
+
+ 
+
+Task 18 
+
+ 
+
+Find db manager name 
+
+ 
+
+@DbManager 
+
+ 
+
+Task 19 
+
+ 
+
+Find dbname 
+
+ 
+
+@Subset(@DbName;-1); 
+
+ 
+
+Task 20 
+
+ 
+
+Database title 
+
+ 
+
+@Subset(@DbName;-1); 
+
+ 
+
+Task 21 
+
+ 
+
+Server name 
+
+ 
+
+@ServerName 
+
+ 
+
+Task 22 
+
+ 
+
+Replicate id 
+
+ 
+
+@ReplicaID 
+
+ 
+
+Task 23 
+
+ 
+
+Find template version 
+
+ 
+
+@TemplateVersion 
+
+ 
+
+Task 24 
+
+ 
+
+webdbname 
+
+ 
+
+@WebDbName 
+
+ 
+
+Task 25 
+
+ 
+
+Find version 
+
+ 
+
+@Version 
+
+ 
+
+Task 26 
+
+ 
+
+Last access document 
+
+ 
+
+@Accessed 
+
+ 
+
+Task 27 
+
+ 
+
+Addition 
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+res:=val1+val2; 
+
+@SetField("res";res) 
+
+ 
+
+Task 28 
+
+ 
+
+Subtraction  
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+res:=val1-val2; 
+
+@SetField("res";res) 
+
+ 
+
+Task 29  
+
+ 
+
+Multiply 
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+res:=val1*val2; 
+
+@SetField("res";res) 
+
+ 
+
+Task 30 
+
+ 
+
+Divide 
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+res:=val1/val2; 
+
+@SetField("res";res) 
+
+ 
+
+Task 31 
+
+ 
+
+Modulo 
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+res:=@Modulo(val1;val2); 
+
+@SetField("res";res) 
+
+ 
+
+Task 32 
+
+ 
+
+Swapping  
+
+ 
+
+val1:=@GetField(@Text("val1")); 
+
+val2:=@GetField(@Text("val2")); 
+
+temp:=val2; 
+
+val2:=val1; 
+
+val1:=temp; 
+
+@SetField("val1";val1); 
+
+@SetField("val2";val2) 
+
+ 
+
+Task 33 
+
+ 
+
+If condition 
+
+ 
+
+val1:=@GetField("val1"); 
+
+val2:=@GetField("val2"); 
+
+res:=@If(val1>val2;"value 1 is greater";"value 2 is greater"); 
+
+@SetField("res";res) 
+
+ 
+
+Task 34 
+
+ 
+
+For loop 
+
+ 
+
+@For(val:=1;val<10;val:=val+1; 
+
+@SetField("Forres";val)) 
+
+ 
+
+Task 35 
+
+ 
+
+While loop 
+
+ 
+
+val:=11; 
+
+@While(val<40; val:=val+1); 
+
+@SetField("Whileres";val) 
+
+ 
+
+Task 36 
+
+ 
+
+Arrays  
+
+ 
+
+str:="cat":"dog":"hat"; 
+
+@For(n:=0;n<=@Elements(str);n:=n+1); 
+
+@SetField("elements";str) 
+
+ 
+
+Task 37 
+
+ 
+
+Sorting 
+
+ 
+
+val:="orange":"arrays":"list":"mongodb"; 
+
+val1:=@Sort(val;[Ascending]); 
+
+@SetField("sort";val1) 
+
+ 
+
+val:="orange":"arrays":"list":"mongodb"; 
+
+val1:=@Sort(val;[Descending]); 
+
+@SetField("sort";val1) 
+
+ 
+
+Task 38 
+
+ 
+
+Find vowels 
+
+ 
+
+str:=@GetField("vow"); 
+
+bool:=@Contains(str;"a":"e":"i":"o":"u"); 
+
+@SetField("vow";bool); 
+
+ 
+
+Task 39 
+
+ 
+
+Phone number validation 
+
+ 
+
+@If(@If(Phone_number<111111111)|(Phone_number>9999999999)|@IsNull(Phone_number);@Failure("Please enter valid Phonenumber"); @Success) 
+
+ 
+
+Task 40 
+
+ 
+
+Dbcolumn 
+
+ 
+
+@Text(@DbColumn("";"":"";"Emp_det";1)) 
+
+ 
+
+Task 41 
+
+ 
+
+Dblookup 
+
+ 
+
+@Text(@DbLookup("":"NoCache";"":"Eventmanagementcopy.nsf";"Emp_det";78;"Address")); 
+
+@SetField("view";val) 
+
+ 
+
+Task 42 
+
+ 
+
+File import 
+
+ 
+
+@Command([EditGotoField];"fileimport"); 
+
+@Command([FileImport];"JPEG image ";"D:\\download.jpg") 
+
+ 
+
+ 
+
+Task 43 
+
+ 
+
+Create document 
+
+ 
+
+@Command([Compose]) 
+
+ 
+
+Task 44 
+
+ 
+
+Retrive value using user input in dblookup 
+
+ 
+
+val:=@If(Employeeid!="";@DbLookup("":"NoCache";"":@DbName;"Employeedetails1";Employeeid;"Dateofjoining";[FAILSILENT]);""); 
+
+@Text(@SetField("Dateofjoining";val)) 
+
+ 
+
+Task 45 
+
+ 
+
+Emp id 4 digit 
+
+ 
+
+@If((@IsNull(Employeeid)|(Employeeid>9999)|(Employeeid<0));@Failure("Please enter 4 digit Employeeid"); @Success) 
+
+ 
+
+Task 46 
+
+ 
+
+Mobile number 10 digit validation 
+
+ 
+
+@If(@IsError(Mobilenumber); @Failure("Please enter a number");@Success); 
+
+len:=@Length(@Text(Mobilenumber)); 
+
+@If(len!=10;@Failure("please enter 10 digit number");@success) 
+
+ 
+
+Task 47 
+
+ 
+
+Auto-generate emp id 
+
+ 
+
+@Max(@DbColumn("":"NoCache";"":@DbName;"Employeedet1view";2)+1) 
+
+ 
+
+Task 48 
+
+ 
+
+Mailsend 
+
+ 
+
+SendTo := @UserName; 
+
+CopyTo := ""; 
+
+BlindCopyTo := ""; 
+
+Subject := "This is a sample email"; 
+
+Remark := ""; 
+
+BodyFields := "This is the body of the email."; 
+
+Flags := ""; 
+
+@MailSend(sendTo ; copyTo ; blindCopyTo ; subject ; remark ; bodyFields ; Flags); 
+
+@Prompt([Ok]; "Success"; "Message sent."); 
+
+@Command([FileSave]); 
+
+@Command([FileCloseWindow]) 
+
+ 
+
+Task 46 
+
+ 
+
+Submit click event 
+
+ 
+
+@If(@IsNull(Employeeid)|@IsNull(Employeename)|@IsNull(DateofJoining)|@IsNull(Designation);@Return(@Prompt([Ok];"MSGBOX";"Please fill all the data"));@Command([FileSave]);@Command([RunAgent];"Agent1");""); 
+
+er:=@IsError(cond); 
+
+@If(@Text(er)=0;"";@Prompt([Ok];"MSGBOX";"AgentExecuted")); 
+
+@If(@Text(er)=0;"";@SetTargetFrame("FrameRight"):@Command([OpenView];"Employeedetailsview")) 
+
+ 
+
+Task 47 
+
+ 
+
+Implode and explode 
+
+ 
+
+city:="chennai":"trivandrum":"Tindivanam"; 
+
+@Implode(city;","); 
+
+@Explode("1,2,3:4,6"); 
+
+ 
+
+Task 48 
+
+ 
+
+If user name exist pass success to msgbox 
+
+ 
+
+input:=@GetField("Users"); 
+
+@If(@Contains("user1":"user2":"user3";input);@Prompt([Ok];"";"Success! User exist");@Prompt([Ok];"";"User doesn't exist")) 
+
+ 
+
+Task 49 
+
+ 
+
+Calender application 
+
+Reference: https://flylib.com/books/en/2.348.1/project_a_build_an_event_calendar.html 
+
+ 
+
+Start date 
+
+DEFAULT StartDate:= 
+
+@If(@IsNewDoc; @Today; 
+
+@Return(StartDate)); 
+
+Startdate 
+
+ 
+
+Total days 
+
+ 
+
+@If(Startdate = ""; 0; 
+
+Enddate = ""; 0; 
+
+@BusinessDays(Startdate; Enddate)) 
+
+ 
+
+Date list view 
+
+ 
+
+DateList := @Explode(@TextToTime(@Text(Startdate) 
+
++ "-" + @Text(Enddate))); 
+
+@TextToTime(DateList) 
+
+ 
+
+Today 
+
+@Command([CalendarGoTo];@Date(@Now)) 
+
+ 
+
+View 
+
+ 
+
+Sub Regiondoubleclick(Source As Notesuiview) 
+
+Dim doc As NotesDocument 
+
+Dim workspace As New NotesUIWorkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim view As NotesView 
+
+Dim dateTime As New NotesDateTime("") 
+
+Dim answer As Integer 
+
+' Display warning if selected date is in the past. 
+
+Call dateTime.SetNow 
+
+If Source.CalendarDateTime < dateTime.LSLocalTime Then 
+
+answer%=Msgbox("Date in past. Do you want to continue?", _ 
+
+292, "Continue?") 
+
+End If 
+
+' Create the appointment if date is in the past and user 
+
+' clicked, YES or create the appointment if date is in 
+
+' the future. 
+
+If (answer% = 6) Or _ 
+
+(Source.CalendarDateTime >= Cdat (dateTime.DateOnly)) Then 
+
+Set view = Source.View 
+
+Set uidoc = workspace.ComposeDocument ("", "", "Appt") 
+
+Set doc = uidoc.Document 
+
+doc.StartDate = Source.CalendarDateTime 
+
+End If 
+
+End Sub 
+
+ 
+
+Query save 
+
+Sub Querysave(Source As Notesuidocument, Continue As Variant) 
+
+Source.Refresh 
+
+End Sub 
+
+ 
+
+Lotus script 
+
+Task 50 
+
+addition 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Dim a As Integer 
+
+Dim b As Integer 
+
+Dim c As Integer 
+
+a=uidoc.Fieldgettext("Field1") 
+
+b= uidoc.Fieldgettext("Field2") 
+
+c=a+b 
+
+Call uidoc.FieldSetText("res",(Cstr(c)))  
+
+End Sub 
+
+ 
+
+Task 51 
+
+ 
+
+Subtraction 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Dim a As Integer 
+
+Dim b As Integer 
+
+Dim c As Integer 
+
+a=uidoc.Fieldgettext("Field1") 
+
+b= uidoc.Fieldgettext("Field2") 
+
+c=a-b 
+
+Call uidoc.FieldSetText("res",(Cstr(c)))  
+
+End Sub 
+
+ 
+
+Task 52 
+
+ 
+
+Swap 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Dim a As Integer 
+
+Dim b As Integer 
+
+Dim c As Integer 
+
+a=uidoc.Fieldgettext("Field1") 
+
+b= uidoc.Fieldgettext("Field2") 
+
+a=a+b 
+
+b=a-b 
+
+a=a-b 
+
+Call uidoc.FieldSetText("Field1",(Cstr(a)))  
+
+Call uidoc.FieldSetText("Field2",(Cstr(b))) 
+
+End Sub 
+
+ 
+
+Task 53 
+
+ 
+
+Copy 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document 
+
+Dim fit% 
+
+fit=uidoc.Fieldgettext("Field1") 
+
+Call uidoc.FieldSetText("Field2",Cstr(fit)) 
+
+End Sub 
+
+ 
+
+Task 54 
+
+ 
+
+ If 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document 
+
+Dim f1    
+
+Dim f2 
+
+f1=uidoc.Fieldgettext("Field1") 
+
+f2= uidoc.Fieldgettext("Field2") 
+
+If f1=""  Or f2=""Then 
+
+Msgbox "please enter values" 
+
+Elseif f1>f2 Then 
+
+Call uidoc.FieldSetText("res","field1 is greater")  
+
+Elseif f2>f1 Then  
+
+Call uidoc.FieldSetText("res","field2 is greater")  
+
+Elseif f1=f2 Then 
+
+Call uidoc.FieldSetText("res","both the field are same")  
+
+Else 
+
+Msgbox "field is null" 
+
+End If 
+
+End Sub 
+
+ 
+
+Task 55 
+
+ 
+
+While 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim x As Integer 
+
+x=Inputbox("enter number less than 10") 
+
+Call uidoc.FieldSetText("Field1",Cstr(x)) 
+
+While(x<10) 
+
+x=x+1 
+
+Call uidoc.FieldSetText("Field2",Cstr(x)) 
+
+Wend 
+
+End Sub 
+
+ 
+
+Task 56 
+
+ 
+
+For 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim x As Integer 
+
+Dim y As Integer 
+
+y= Inputbox ("enter number") 
+
+For x=1 To y  
+
+Print x 
+
+Next 
+
+Call uidoc.FieldSetText("Field1",Cstr(x))  
+
+End Sub 
+
+ 
+
+Task 57 
+
+ 
+
+For all 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim arrays(1 To 2) 
+
+arrays(1)="A" 
+
+arrays(2)="B" 
+
+Forall i In arrays 
+
+Msgbox i 
+
+End Forall 
+
+End Sub 
+
+ 
+
+Task 58 
+
+ 
+
+Array 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim arr (4) 
+
+arr(0)="KEER" 
+
+arr(1)="SAI" 
+
+arr(2)="SK" 
+
+arr(3)="INBA" 
+
+arr(4)="DWARAK" 
+
+%REM  
+
+Forall i In arr 
+
+Msgbox i 
+
+'Call uidoc.FieldSetText("Field1",Cstr(i))  
+
+End Forall 
+
+%END REM  
+
+For i=Lbound(arr) To Ubound( arr) 
+
+Msgbox arr(i) 
+
+Next 
+
+End Sub 
+
+ 
+
+Task 59 
+
+ 
+
+Switch 
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim x 
+
+x=  uidoc.FieldgetText("case")  
+
+If x=""Then 
+
+Msgbox "select a list" 
+
+Else 
+
+Select Case x 
+
+Case "banana": 
+
+Call uidoc.FieldsetText("res", "you selected a fruit") 
+
+Case "carrot": 
+
+Call uidoc.FieldsetText("res", "you selected a vegetable") 
+
+Case "orange": 
+
+Call uidoc.FieldsetText("res", "you selected a color") 
+
+Case "waterbottle": 
+
+Call uidoc.FieldsetText("res", "you selected a things") 
+
+Case Else 
+
+Call uidoc.FieldsetText("res", "sorry") 
+
+End Select 
+
+End If 
+
+End Sub 
+
+ 
+
+Task  60 
+
+ 
+
+Redim  
+
+ 
+
+Sub Click(Source As Button) 
+
+Dim y 
+
+Dim l  
+
+l=1 
+
+While y<>"end" 
+
+Redim Preserve arr(1 To l) 
+
+y= Inputbox$("enter string or end to exit") 
+
+arr(l)=y  
+
+l=l+1 
+
+Wend 
+
+Forall i In arr 
+
+Msgbox i 
+
+End Forall 
+
+End Sub 
+
+ 
+
+Task 61 
+
+ 
+
+Explain Left, Right, StrLeft, StrRight, StrLeftBack,StrRightBack functions with an example. 
+
+ 
+
+Left: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As String 
+
+subString$ =uidoc.FieldGetText("name1") 'Keerthana 
+
+op=Left(subString$,2)   
+
+Print op 'ke 
+
+Right: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As String 
+
+subString$ =uidoc.FieldGetText("name1") 'Keerthana 
+
+op=Right(subString$,2)   
+
+Print op 'na 
+
+Strleft: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As Variant  
+
+Dim subString1 As String 
+
+subString="the dog has the tail" 
+
+subString1="og" 
+
+op=Strleft(subString,subString1) 
+
+Msgbox op 'the d 
+
+Strright: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As Variant  
+
+Dim subString1 As String 
+
+subString="the dog has the tail" 
+
+subString1="has" 
+
+op=Strright(subString,subString1) 
+
+Msgbox op 'the tail 
+
+Strleftback: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As Variant  
+
+Dim subString1 As String 
+
+subString="the dog has the tail" 
+
+subString1="dog" 
+
+op=Strleftback(subString,subString1) 
+
+Msgbox op 'the 
+
+Strrightback: 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op As Variant  
+
+Dim subString1 As String 
+
+subString="the dog has the tail" 
+
+subString1="has" 
+
+op=Strrightback(subString,subString1) 
+
+Msgbox op 'the tail 
+
+ 
+
+Task 62 
+
+ 
+
+How to concatenate all members of array using lotus script? 
+
+ 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim arr (4) 
+
+arr(0)=1 
+
+arr(1)=2 
+
+arr(2)=3 
+
+arr(3)=4 
+
+arr(4)=5 
+
+Msgbox Join(arr) ' 1 2 3 4 5 
+
+ 
+
+Task 63 
+
+ 
+
+How to adjust date & time using lotus script and explain with an example? 
+
+ 
+
+Date function: 
+
+Dim times As NotesDateTime 
+
+Set times=New notesdatetime("Today") '31/3/2021 
+
+Call times.AdjustDay(1) 
+
+Call times.AdjustMonth(2) 
+
+Call times.AdjustYear(10)  
+
+Msgbox times.DateOnly '06/01/2031 
+
+Time function: 
+
+Dim times As NotesDateTime 
+
+Set times=New notesdatetime("02:00:00 pm") 
+
+Call times.AdjustHour(1) 
+
+Call times.Adjustminute(2) 
+
+Call times.Adjustsecond(10) 
+
+Msgbox times.TimeOnly  '03:02:10pm 
+
+ 
+
+Task 64 
+
+ 
+
+Delete All documents from a view using lotus script. 
+
+ 
+
+Dim s As New NotesSession 
+
+Dim db As NotesDatabase 
+
+Dim dc As NotesDocumentCollection 
+
+Dim doc As NotesDocument 
+
+Dim nextdoc As NotesDocument 
+
+Dim View As NotesView 
+
+Set db = s.CurrentDatabase 
+
+Set view = db.GetView("Newviewdoc") 
+
+Set doc = view.GetFirstDocument 
+
+While Not doc Is Nothing 
+
+Set nextdoc = view.GetNextDocument(doc) 
+
+Call doc.Remove(True) 'delete the document 
+
+Set doc = nextDoc 
+
+Wend 
+
+ 
+
+Task 65 
+
+ 
+
+create a view using Lotus script, and map the view selection formula using lotus script 
+
+ 
+
+Dim s As New NotesSession 
+
+Dim ws As New NotesUIWorkspace 
+
+Dim db As NotesDatabase 
+
+Dim uidoc As NotesUIDocument 
+
+Dim v As NotesView 
+
+Dim col1 As notesviewcolumn 
+
+Set db = s.CurrentDatabase 
+
+Set uidoc=ws.CurrentDocument 
+
+Set uidb=ws.GetCurrentDatabase 
+
+Set v=db.CreateView("tempView2","SELECT form='MailTasks") 'viewcreated 
+
+Set db= s.CurrentDatabase 
+
+Set v=db.GetView("tempView2") 
+
+v.Refresh 
+
+Call uidb.OpenView("tempview2") 'view opened 
+
+ 
+
+Task 66 
+
+ 
+
+How do you use formulas in lotus script and explain with an example? 
+
+ 
+
+Dim workspace As New NotesUIWorkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim doc As NotesDocument 
+
+Dim eval As Variant 
+
+Set uidoc = workspace.CurrentDocument 
+
+Set doc = uidoc.Document 
+
+eval = Evaluate("@length(name1)", doc) 'keerthana 
+
+Call doc.ReplaceItemValue("name2", eval) '9 
+
+Call doc.Save(True, False) 
+
+ 
+
+Task 67 
+
+ 
+
+How did you get field value using Lotus script in both front end and back end classes? 
+
+ 
+
+Front end 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+subString$ =uidoc.FieldGetText("name1") 
+
+Msgbox(substring$) 
+
+Backend  
+
+Dim s As New NotesSession 
+
+Dim db As NotesDatabase 
+
+Dim dc As NotesDocumentCollection 
+
+Dim doc As NotesDocument 
+
+Dim nextdoc As NotesDocument 
+
+Dim View As NotesView 
+
+Dim agentName As String 
+
+Set db = s.CurrentDatabase 
+
+Set view = db.GetView("Newviewdoc") 
+
+Set doc = view.GetFirstDocument  
+
+Dim res As Variant 
+
+res = doc.GetItemValue("name1") 
+
+Msgbox(res(0)) 
+
+ 
+
+task68 
+
+ 
+
+How did you change a field value in selected documents using lotus script? 
+
+ 
+
+Dim workspace As New notesuiworkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Dim docu As NotesDocument 
+
+Set uidoc=workspace.CurrentDocument 
+
+Set doc = uidoc.Document  
+
+Dim subString As String 
+
+Dim op(0 To 2) As String 
+
+Dim j As String 
+
+op(0)="jan" 
+
+Call uidoc.FieldSetText("name1",op(0)) 
+
+Msgbox(op(0)) 
+
+j=Replace(op(0),"jan","feb") 
+
+Call uidoc.FieldSetText("name1",j) 
+
+Msgbox(j) 
+
+ 
+
+Task 69 
+
+ 
+
+How to remove data from one field and pass the same data to other field using front end classes? 
+
+ 
+
+Dim workspace As New NotesUIWorkspace 
+
+Dim uidoc As NotesUIDocument 
+
+Set uidoc = workspace.CurrentDocument 
+
+Call uidoc.GoToField( "name1" ) 
+
+Call uidoc.SelectAll 
+
+Call uidoc.Cut 
+
+Call uidoc.GotoNextField 
+
+Call uidoc.Paste 
+
+ 
+
+Task 70 
+
+ 
+
+Write a code to implement FT Search and count the no of documents 
+
+ 
+
+Dim session As New NotesSession 
+
+Dim db As NotesDatabase 
+
+Dim collection As NotesDocumentCollection 
+
+Dim doc As NotesDocument 
+
+Set db = session.CurrentDatabase 
+
+Set collection = db.FTSearch ( "value set", 0 ) 
+
+Set doc = collection.GetFirstDocument () 
+
+While Not(doc Is Nothing) 
+
+Set doc=collection.GetNextDocument(doc) 
+
+Wend 
+
+Msgbox(collection.Count)  
+
+ 
+
+Task 71 
+
+ 
+
+How to display the username in canonical format 
+
+ 
+
+Dim session As New NotesSession 
+
+Dim nam As NotesName 
+
+Set nam = session.CreateName( "keerthana ramesh/ keerthana") 
+
+Messagebox nam.Canonical 
+
+ 
+
+Task 72 
+
+ 
+
+Write a code to get all the documents in view based on a keyword and put them in Folder 
+
+ 
+
+Dim s As New NotesSession 
+
+Dim db As NotesDatabase 
+
+Dim dc As NotesDocumentCollection 
+
+Dim doc As NotesDocument 
+
+Set db = s.CurrentDatabase 
+
+Set dc = db.AllDocuments 
+
+Set doc = dc.GetFirstDocument 
+
+While Not(doc Is Nothing) 
+
+Call doc.PutInFolder("Template") 
+
+Set doc = dc.GetNextDocument(doc) 
+
+Wend 
