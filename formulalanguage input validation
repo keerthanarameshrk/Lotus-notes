@@ -1,0 +1,1 @@
+@If(@IsNull(Name);@Failure("Please enter name"); @Success) 
